@@ -10,3 +10,19 @@ Banner has awful formatting by default. This script adjusts the formatting so cl
 option is added to the pagination drop down. Around 150 classes will make your browser upset.
 
 * [Install Banner Usability Fixes](https://raw.githubusercontent.com/sgzwach/userscripts/master/banner-browseclasses.user.js)
+
+### Realm Hint 
+
+RIS doesn't store ADFS realm hints. This script automatically enters DSU as your domain and clicks next for you.
+
+* [Install Realm Hint Fix](https://raw.githubusercontent.com/sgzwach/userscripts/master/adfs-realmhint.user.js)
+
+### D2L Save and Next Button
+
+Changes the functionality of the "Next Student" button in the grade view of D2L to "Save and Next." Also will open the first matching document.
+
+* [Install D2L Save & Next](https://raw.githubusercontent.com/sgzwach/userscripts/master/d2l-saveandnext.user.js)
+
+
+
+

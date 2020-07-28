@@ -1,12 +1,15 @@
 // ==UserScript==
-// @name         Autosave Grade Updates on D2L
-// @namespace    https://sgzwach.com
-// @version      0.3
-// @description  Saves grade changes within D2L automatically when "Next student" is clicked in the dropbox.
-// @author       Shawn
-// @match        https://d2l.sdbor.edu/d2l/lms/dropbox/admin/mark/folder_user_mark.d2l*
-// @grant        none
-// @run-at       document-end
+// @name           Autosave Grade Updates on D2L
+// @namespace      https://sgzwach.com
+// @version        0.3
+// @description    Saves grade changes within D2L automatically when "Next student" is clicked in the dropbox. Also, autoopen the first doc.
+// @author         Shawn
+// @match          https://d2l.sdbor.edu/d2l/lms/dropbox/admin/mark/folder_user_mark.d2l*
+// @grant          none
+// @updateURL      https://raw.githubusercontent.com/sgzwach/userscripts/master/d2l-saveandnext.user.js
+// @downloadURL    https://raw.githubusercontent.com/sgzwach/userscripts/master/d2l-saveandnext.user.js
+
+// @run-at         document-end
 // ==/UserScript==
 
 (function() {
