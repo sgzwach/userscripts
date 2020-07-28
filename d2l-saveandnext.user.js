@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           Autosave Grade Updates on D2L
-// @namespace      https://sgzwach.com
+// @namespace      http://github.com/sgzwach
 // @version        0.3
 // @description    Saves grade changes within D2L automatically when "Next student" is clicked in the dropbox. Also, autoopen the first doc.
 // @author         Shawn

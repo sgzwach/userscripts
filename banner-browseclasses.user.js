@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           Banner Styling
-// @namespace      http://tampermonkey.net/
+// @namespace      http://github.com/sgzwach
 // @version        0.2
 // @description    List all classes and format a touch better
 // @author         shawn 

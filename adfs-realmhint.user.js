@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           RealmHintMagic
-// @namespace      http://tampermonkey.net/
+// @namespace      http://github.com/sgzwach
 // @version        0.2
 // @description    Auto fill DSU realm hint
 // @author         shawn
