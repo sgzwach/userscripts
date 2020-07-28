@@ -8,8 +8,8 @@
 // @require        https://gist.github.com/raw/2625891/waitForKeyElements.js
 // @grant          GM_addStyle
 // @run-at         document-end
-// @updateURL      https://raw.githubusercontent.com/sgzwach/userscripts/master/banner-browseclasses.js
-// @downloadURL    https://raw.githubusercontent.com/sgzwach/userscripts/master/banner-browseclasses.js
+// @updateURL      https://raw.githubusercontent.com/sgzwach/userscripts/master/banner-browseclasses.user.js
+// @downloadURL    https://raw.githubusercontent.com/sgzwach/userscripts/master/banner-browseclasses.user.js
 // ==/UserScript==
 
 (function() {
