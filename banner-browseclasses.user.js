@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Banner Styling
 // @namespace      http://github.com/sgzwach
-// @version        0.2
+// @version        0.3
 // @description    List all classes and format a touch better
 // @author         shawn 
 // @match          https://registration.sdbor.edu/StudentRegistrationSsb/ssb/classSearch/classSearch

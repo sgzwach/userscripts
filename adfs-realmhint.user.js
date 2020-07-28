@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           RealmHintMagic
 // @namespace      http://github.com/sgzwach
-// @version        0.2
+// @version        0.3
 // @description    Auto fill DSU realm hint
 // @author         shawn
 // @match          https://adfs.sdbor.edu/adfs/ls*
