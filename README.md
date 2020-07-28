@@ -17,11 +17,13 @@ RIS doesn't store ADFS realm hints. This script automatically enters DSU as your
 
 * [Install Realm Hint Fix](https://raw.githubusercontent.com/sgzwach/userscripts/master/adfs-realmhint.user.js)
 
-### D2L Save and Next Button
+### D2L Usability Fixes 
 
-Changes the functionality of the "Next Student" button in the grade view of D2L to "Save and Next." Also will open the first matching document.
+Save and Next changes the functionality of the "Next Student" button in the grade view of D2L to "Save and Next." Also will open the first matching document.
+Daylight Tiny shrinks table cells to be less obnoxious in the default theme.
 
 * [Install D2L Save & Next](https://raw.githubusercontent.com/sgzwach/userscripts/master/d2l-saveandnext.user.js)
+* [Install D2L Daylight Tiny](https://raw.githubusercontent.com/sgzwach/userscripts/master/d2l-daylighttiny.user.js)
 
 
 
