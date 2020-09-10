@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Autosave Grade Updates on D2L
 // @namespace      http://github.com/sgzwach
-// @version        0.5
+// @version        0.6
 // @description    Saves grade changes within D2L automatically when "Next student" is clicked in the dropbox. Also, autoopen the first doc.
 // @author         Shawn
 // @match          https://d2l.sdbor.edu/d2l/lms/dropbox/admin/mark/folder_user_mark.d2l*
@@ -29,8 +29,8 @@
     var done = false;
     for (var i=0; i < divs.length && !done; i++) {
         for (var c=0; c < divs[i].children.length && !done; c++) {
-            if (divs[i].children[c].title == "Next Student") {
-                divs[i].children[c].addEventListener("click", clickSaveButton); // modified after talking to Mike to just use next student button
+            if (divs[i].children[c].title == "Next Student" || divs[i].children[c].title == "Next Group") {
+                divs[i].children[c].addEventListener("click", clickSaveButton); // modified after talking to Mike to just use next student button - Mike also found this didn't work for groups
                 done = true;
             }
         }
