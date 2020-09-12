@@ -25,3 +25,9 @@ Daylight Tiny shrinks table cells to be less obnoxious in the default theme. Max
 * [Install D2L Save & Next](https://raw.githubusercontent.com/sgzwach/userscripts/master/d2l-saveandnext.user.js)
 * [Install D2L Daylight Tiny](https://raw.githubusercontent.com/sgzwach/userscripts/master/d2l-daylighttiny.user.js)
 * [Install D2L Max Results](https://raw.githubusercontent.com/sgzwach/userscripts/master/d2l-maxresults.user.js)
+
+### IA Lab Scripts
+
+Auto user filter grabs username from header and filters to that user's vApps.
+
+* [VCDSP Username Filter](https://raw.githubusercontent.com/sgzwach/userscripts/master/vcdsp-vapp-filter-username.user.js)
