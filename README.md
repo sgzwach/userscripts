@@ -21,10 +21,12 @@ RIS doesn't store ADFS realm hints. This script automatically enters DSU as your
 
 Save and Next changes the functionality of the "Next Student" button in the grade view of D2L to "Save and Next." Also will open the first matching document.
 Daylight Tiny shrinks table cells to be less obnoxious in the default theme. Max Results will fire an event to refresh with the max results per page on most D2L lists/tables.
+PDF View Fix adjusts the legacy pdf viewer to 100% of the parent all the time.
 
 * [Install D2L Save & Next](https://raw.githubusercontent.com/sgzwach/userscripts/master/d2l-saveandnext.user.js)
 * [Install D2L Daylight Tiny](https://raw.githubusercontent.com/sgzwach/userscripts/master/d2l-daylighttiny.user.js)
 * [Install D2L Max Results](https://raw.githubusercontent.com/sgzwach/userscripts/master/d2l-maxresults.user.js)
+* [Install D2L PDF View Fix](https://raw.githubusercontent.com/sgzwach/userscripts/master/d2l-pdfviewfix.user.js)
 
 ### IA Lab Scripts
 
