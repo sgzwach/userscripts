@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           defuse.ca copy disassembly to assembly
 // @namespace      http://github.com/sgzwach
-// @version        0.3
+// @version        0.4
 // @description    Copies disassembly (without offsets) to the assemble textArea
 // @author         shawn
 // @match          https://defuse.ca/online-x86-assembler.htm
@@ -34,9 +34,7 @@
     {
         // get text area
         var textArea = document.getElementsByName('instructions')[0];
-        var lines = disassemblyText.split('\n');
-        for (var i = 0; i < lines.length; i++)
-            textArea.append(lines[i].slice(28)+"\n");
+        disassemblyText.split('\n').forEach(function(item, index){textArea.append(item.slice(28) + '\n');});
     }
     else
         console.log("No disassembly found...");
