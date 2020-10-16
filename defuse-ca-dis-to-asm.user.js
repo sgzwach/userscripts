@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           defuse.ca copy disassembly to assembly
 // @namespace      http://github.com/sgzwach
-// @version        0.1
+// @version        0.2
 // @description    Copies disassembly (without offsets) to the assemble textArea
 // @author         shawn
 // @match          https://defuse.ca/online-x86-assembler.htm
@@ -30,7 +30,7 @@
     }
 
     // extract instructions
-    var r = new RegExp(/[a-z]*\s*(\d+|[a-z]|\,)*$/);
+    var r = new RegExp(/(?!\s)[a-z]*\s*(\d+|[a-z]|\,)*$/);
     if (disassemblyText)
     {
         // get text area
