@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Skip VM Page VDCHS
 // @namespace    https://github.com/sgzwach/
-// @version      0.1
+// @version      0.2
 // @description  On first load of SPA if we land on VMs instead of vApps brute our way to vApps and filter by username
 // @author       shawn
-// @match        https://vcloud.ialab.dsu.edu/tenant/learn/vdcs/*
+// @match        https://vcloud.ialab.dsu.edu/tenant/learn/*
 // @require      https://gist.github.com/raw/2625891/waitForKeyElements.js
 // @require      http://code.jquery.com/jquery-3.5.1.min.js
 // @updateURL    https://raw.githubusercontent.com/sgzwach/userscripts/master/vcdsp-vapp-filter-username.user.js
