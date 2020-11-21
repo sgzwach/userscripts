@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           D2L Default PDF View Fix
 // @namespace      http://github.com/sgzwach
-// @version        0.1
+// @version        0.2
 // @description    Fill the parent div with the pdf viewer (doesn't break for docx for some reason)
 // @author         Shawn
 // @match          https://d2l.sdbor.edu/d2l/le/dropbox/documents/*
