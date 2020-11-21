@@ -6,7 +6,6 @@
 // @author         Shawn
 // @match          https://d2l.sdbor.edu/d2l/le/dropbox/documents/*
 // @grant          none
-// @require        http://code.jquery.com/jquery-3.4.1.min.js
 // @updateURL      https://raw.githubusercontent.com/sgzwach/userscripts/master/d2l-pdfviewfix.user.js
 // @downloadURL    https://raw.githubusercontent.com/sgzwach/userscripts/master/d2l-pdfviewfix.user.js
 // @run-at         document-end
