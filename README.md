@@ -10,7 +10,7 @@ Banner has awful formatting by default. These scripts adjust formatting on certa
 
 * [Install Banner Class Browser Fix](https://raw.githubusercontent.com/sgzwach/userscripts/master/banner-browseclasses.user.js)
 * [Install Banner Advisee List Fix](https://raw.githubusercontent.com/sgzwach/userscripts/master/banner-advisees.user.js)
-* [Install Banner Profile Term Select](https://raw.githubusercontent.com/sgzwach/userscripts/master/banner-banner-profile-term-select.user.js)
+* [Install Banner Profile Term Select](https://raw.githubusercontent.com/sgzwach/userscripts/master/banner-profile-term-select.user.js)
 
 ### Realm Hint
 
