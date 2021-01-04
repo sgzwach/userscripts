@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name           Add All Option for Advisees
 // @namespace      http://github.com/sgzwach
-// @version        0.1
+// @version        0.2
 // @description    List all advisees option and slight formatting changes
 // @author         shawn
-// @match          https://student.sdbor.edu/StudentSelfService/ssb/adviseeList/adviseeList
+// @match          https://student.sdbor.edu/StudentSelfService/adviseeList/adviseeList
 // @require        https://gist.github.com/raw/2625891/waitForKeyElements.js
 // @grant          GM_addStyle
 // @run-at         document-end
