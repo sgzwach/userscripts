@@ -31,9 +31,10 @@ PDF View Fix adjusts the legacy pdf viewer to 100% of the parent all the time.
 
 ### IA Lab Scripts
 
-Auto user filter grabs username from header and filters to that user's vApps.
+Auto user filter grabs username from header and filters to that user's vApps. The WMKS revert opacity script (very pre-alpha status) checks if opacity is .5 and sets the opacity back to 1 if the console is connected. If not, it attempts to reset the connection if available (by a click).
 
 * [VCDSP Username Filter](https://raw.githubusercontent.com/sgzwach/userscripts/master/vcdsp-vapp-filter-username.user.js)
+* [VCDSP WMKS Revert Opacity](https://raw.githubusercontent.com/sgzwach/userscripts/master/vcdsp-opacity-override.user.js)
 
 ### defuse.ca disassembly helper
 
