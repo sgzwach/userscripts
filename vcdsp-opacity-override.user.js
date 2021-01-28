@@ -4,7 +4,7 @@
 // @version        0.1
 // @description    If opacity is set to 50% and the wmks console is connected, reset to 100%
 // @author         You
-// @match          https://vcloud.ialab.dsu.edu/tenant/learn/wmks-console/index.html*
+// @match          https://vcloud.ialab.dsu.edu/tenant/*/wmks-console/index.html*
 // @grant          none
 // @updateURL      https://raw.githubusercontent.com/sgzwach/userscripts/master/vcdsp-opacity-override.user.js
 // @downloadURL    https://raw.githubusercontent.com/sgzwach/userscripts/master/vcdsp-opacity-override.user.js
