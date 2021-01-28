@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           H5 WMKS Revert Opacity
 // @namespace      https://github.com/sgzwach
-// @version        0.1
+// @version        0.2
 // @description    If opacity is set to 50% and the wmks console is connected, reset to 100%
 // @author         You
 // @match          https://vcloud.ialab.dsu.edu/tenant/*/wmks-console/index.html*
