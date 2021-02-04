@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Autosave Grade Updates on D2L
 // @namespace      http://github.com/sgzwach
-// @version        0.7
+// @version        0.8
 // @description    Saves grade changes within D2L automatically when "Next student" is clicked in the dropbox. Also, autoopen the first doc.
 // @author         Shawn
 // @match          https://d2l.sdbor.edu/d2l/lms/dropbox/admin/mark/folder_user_mark.d2l*
@@ -44,7 +44,7 @@
     {
         link = docs[i].children[0];
         var ll = link.title.toLowerCase();
-        if ((ll.endsWith("pdf") || ll.endsWith("docx") || ll.endsWith("doc") || ll.endsWith("rtf") || ll.endsWith('odt') || ll.endsWith('ppt') || ll.endsWith('pptx')) && link.href.startsWith("javascript"))
+        if ((ll.endsWith("pdf") || ll.endsWith("docx") || ll.endsWith("doc") || ll.endsWith("rtf") || ll.endsWith('odt') || ll.endsWith('ppt') || ll.endsWith('pptx') || ll.endsWith("png")) && link.href.startsWith("javascript"))
             done = true;
     }
     if (done)
