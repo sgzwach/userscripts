@@ -44,7 +44,7 @@
     {
         link = docs[i].children[0];
         var ll = link.title.toLowerCase();
-        if ((ll.endsWith("pdf") || ll.endsWith("docx") || ll.endsWith("doc") || ll.endsWith("rtf") || ll.endsWith('odt') || ll.endsWith('ppt') || ll.endsWith('pptx')) && link.href.startsWith("javascript"))
+        if ((ll.endsWith("pdf") || ll.endsWith("docx") || ll.endsWith("doc") || ll.endsWith("rtf") || ll.endsWith('odt') || ll.endsWith('ppt') || ll.endsWith('pptx')) || ll.endsWith('png')) && link.href.startsWith("javascript"))
             done = true;
     }
     if (done)
