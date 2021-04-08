@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Add All Option for Advisees
 // @namespace      http://github.com/sgzwach
-// @version        0.2
+// @version        0.3
 // @description    List all advisees option and slight formatting changes
 // @author         shawn
 // @match          https://student.sdbor.edu/StudentSelfService/adviseeList/adviseeList
