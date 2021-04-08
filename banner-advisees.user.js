@@ -5,6 +5,7 @@
 // @description    List all advisees option and slight formatting changes
 // @author         shawn
 // @match          https://student.sdbor.edu/StudentSelfService/adviseeList/adviseeList
+// @match          https://student.sdbor.edu/StudentSelfService/ssb/adviseeList/adviseeList
 // @require        https://gist.github.com/raw/2625891/waitForKeyElements.js
 // @grant          GM_addStyle
 // @run-at         document-end
