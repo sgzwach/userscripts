@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name           Add All Option for Advisees and Fire It
+// @name           Add All Option for Advisees
 // @namespace      http://github.com/sgzwach
 // @version        0.4
 // @description    List all advisees option and slight formatting changes; list link hack for the moment
