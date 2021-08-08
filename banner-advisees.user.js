@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Add All Option for Advisees
 // @namespace      http://github.com/sgzwach
-// @version        0.4
+// @version        0.5
 // @description    List all advisees option and slight formatting changes; list link hack for the moment
 // @author         shawn
 // @match          https://student.sdbor.edu/StudentSelfService/adviseeList/adviseeList
@@ -43,6 +43,8 @@
         });
     }
     else if (window.location.pathname.includes('termSelection')) {
-        document.getElementsByClassName('view-roster')[0].href = "https://student.sdbor.edu/StudentSelfService/adviseeList/adviseeList";
+        var rosterlink = document.getElementsByClassName('view-roster')[0]
+        rosterlink.href = "https://student.sdbor.edu/StudentSelfService/adviseeList/adviseeList";
+        rosterlink.innerText = "Shawn's Better Link";
     }
 })();
