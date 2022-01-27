@@ -35,9 +35,3 @@ Auto user filter grabs username from header and filters to that user's vApps. Th
 
 * [VCDSP Username Filter](https://raw.githubusercontent.com/sgzwach/userscripts/master/vcdsp-vapp-filter-username.user.js)
 * [VCDSP WMKS Revert Opacity](https://raw.githubusercontent.com/sgzwach/userscripts/master/vcdsp-opacity-override.user.js)
-
-### defuse.ca disassembly helper
-
-Copies disassembly from view to text-area to allow further editing if pasting from shellcode (slice(28))
-
-* [defuse.ca Disassembly Copy](https://raw.githubusercontent.com/sgzwach/userscripts/master/defuse-ca-dis-to-asm.user.js)
