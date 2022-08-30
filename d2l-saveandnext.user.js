@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Autosave Grade Updates on D2L
 // @namespace      http://github.com/sgzwach
-// @version        1.22
+// @version        1.30
 // @description    Saves grade changes within D2L automatically when "Next student" is clicked in the dropbox. Also, autoopen the first doc.
 // @author         Shawn
 // @match          https://d2l.sdbor.edu/d2l/le/activities/iterator/*
@@ -13,12 +13,12 @@
 (function() {
     'use strict';
 
-    function inTheShadows() {
-        var tokenReceiver = document.querySelector('.d2l-token-receiver');
-        var saveButton = tokenReceiver.shadowRoot.querySelector('d2l-consistent-evaluation-page').shadowRoot.querySelector('d2l-template-primary-secondary').querySelector('d2l-consistent-evaluation-footer').shadowRoot.querySelector('#consistent-evaluation-footer-save-draft').shadowRoot.querySelector('.d2l-label-text');
-        var nextButton = tokenReceiver.shadowRoot.querySelector('d2l-consistent-evaluation-page').shadowRoot.querySelector('d2l-template-primary-secondary').querySelector('d2l-consistent-evaluation-footer').shadowRoot.querySelector('d2l-navigation-button').shadowRoot.querySelector('[title="Next Student"]');
-        //var topNextButton = tokenReceiver.shadowRoot.querySelector('d2l-consistent-evaluation-page').shadowRoot.querySelector('d2l-template-primary-secondary').querySelector('d2l-consistent-evaluation-nav-bar').shadowRoot.querySelector('d2l-navigation-iterator').shadowRoot.querySelector('d2l-navigation-iterator-item').shadowRoot.querySelector('d2l-navigation-button').shadowRoot.querySelector('.d2l-focusable');
-        nextButton.addEventListener("click", function(){saveButton.click();});
+    function findModalSaveButton() {
+        var modalSaveButton = document.querySelector('.d2l-token-receiver').shadowRoot.querySelector('d2l-consistent-evaluation-page').shadowRoot.querySelector('d2l-consistent-evaluation-dialogs').shadowRoot.querySelector('[data-dialog-action="save"]');
+        try {
+            modalSaveButton.click();
+        }
+        catch {}
     }
 
     function openDocument() {
@@ -26,14 +26,20 @@
         documentButton.click();
     }
 
-    setTimeout(inTheShadows, 3000);
-
     new MutationObserver(function(mutations) {
         if (mutations.length >= 1)
             setTimeout(openDocument, 1000);
     }).observe(
         document.querySelector('title'),
         { subtree: true, characterData: true, childList: true }
+    );
+
+    new MutationObserver(function(mutations) {
+        if (mutations.length >= 1)
+            setTimeout(function(){findModalSaveButton();}, 300);
+    }).observe(
+        document.querySelector('body'),
+        { attributes: true }
     );
 
 })();
