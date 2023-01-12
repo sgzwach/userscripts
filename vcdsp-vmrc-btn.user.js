@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VCD VMRC button add
 // @namespace    http://github.com/sgzwach
-// @version      0.1
+// @version      0.2
 // @description  a hack to clone the elements from the context menu to the table view
 // @author       shawn
 // @updateURL    https://raw.githubusercontent.com/sgzwach/userscripts/master/vcdsp-vmrc-btn.user.js
@@ -9,7 +9,6 @@
 // @match        https://vcloud.ialab.dsu.edu/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=dsu.edu
 // @require      http://code.jquery.com/jquery-3.4.1.min.js
-// @require      https://gist.github.com/raw/2625891/waitForKeyElements.js
 // @grant        none
 // ==/UserScript==
 
@@ -18,9 +17,16 @@
 
     var lock = false;
 
-    waitForKeyElements('.first-dropdown-toggle', function(node) {
-        createLinks();
-    });
+    new MutationObserver(function(mutations) {
+        if (mutations.length >= 1 && window.location.toString().includes("vcd-vapp-vms")) {
+            createLinks();
+        } else {
+            lock = false;
+        }
+    }).observe(
+        document.querySelector('body'),
+        { subtree: true, childList: true }
+    );
 
     // this isn't great (but for a first pass that works we'll use it for now)
     function createLinks() {
