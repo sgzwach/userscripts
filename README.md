@@ -35,3 +35,4 @@ Auto user filter grabs username from header and filters to that user's vApps. Th
 
 * [VCDSP Username Filter](https://raw.githubusercontent.com/sgzwach/userscripts/master/vcdsp-vapp-filter-username.user.js)
 * [VCDSP WMKS Revert Opacity](https://raw.githubusercontent.com/sgzwach/userscripts/master/vcdsp-opacity-override.user.js)
+* [VCDSP Add VMRC Button in Table](https://raw.githubusercontent.com/sgzwach/userscripts/master/vcdsp-vmrc-btn.user.js)
