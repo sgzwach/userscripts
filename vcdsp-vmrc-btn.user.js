@@ -4,9 +4,9 @@
 // @version      0.2
 // @description  a hack to clone the elements from the context menu to the table view
 // @author       shawn
+// @match        https://vcloud.ialab.dsu.edu/*
 // @updateURL    https://raw.githubusercontent.com/sgzwach/userscripts/master/vcdsp-vmrc-btn.user.js
 // @downloadURL  https://raw.githubusercontent.com/sgzwach/userscripts/master/vcdsp-vmrc-btn.user.js
-// @match        https://vcloud.ialab.dsu.edu/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=dsu.edu
 // @require      http://code.jquery.com/jquery-3.4.1.min.js
 // @grant        none
