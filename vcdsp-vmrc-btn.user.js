@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VCD VMRC button add
 // @namespace    http://github.com/sgzwach
-// @version      0.2
+// @version      0.3
 // @description  a hack to clone the elements from the context menu to the table view
 // @author       shawn
 // @match        https://vcloud.ialab.dsu.edu/*
