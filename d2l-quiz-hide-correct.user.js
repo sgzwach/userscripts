@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         D2L Skip Questions Graded Correct in Quizzes
-// @namespace    http://tampermonkey.net/
+// @namespace    http://github.com/sgzwach
 // @version      0.1
 // @description  Any question marked correct should be minimized automatically, but can be expanded again
 // @author       shawn
