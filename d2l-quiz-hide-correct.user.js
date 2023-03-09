@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         D2L Skip Questions Graded Correct in Quizzes
 // @namespace    http://github.com/sgzwach
-// @version      0.1
+// @version      0.2
 // @description  Any question marked correct should be minimized automatically, but can be expanded again
 // @author       shawn
 // @match        https://d2l.sdbor.edu/d2l/lms/quizzing/admin/mark/quiz_mark_attempt.d2l*
@@ -28,24 +28,38 @@
         }
     }
 
-    var i, divToHide, questionInfo, middleColumn;
+    function hideCorrect() {
+        var i, divToHide, questionInfo, middleColumn;
 
-    // Add handler for toggling question to any div that has one
-    var middleColumns = document.getElementsByClassName('dlay_m');
-    for (i = 0; i < middleColumns.length; i++) {
-        middleColumns[i].addEventListener("click", toggleQuestion);
-        middleColumns[i].style.cursor = 'pointer';
-        middleColumns[i].innerText = '-';
+        // Add handler for toggling question to any div that has one
+        var middleColumns = document.getElementsByClassName('dlay_m');
+        for (i = 0; i < middleColumns.length; i++) {
+            middleColumns[i].addEventListener("click", toggleQuestion);
+            middleColumns[i].style.cursor = 'pointer';
+            middleColumns[i].innerText = '-';
+        }
+
+        // Find any "Correct response" alt text
+        //var correct = document.querySelectorAll('d2l-icon[alt="Correct Response"]');
+        var correct = document.querySelectorAll('[label="Score"]');
+        if (correct.length > 0 && typeof correct[0].value == "undefined")
+            setTimeout(hideCorrect, 1000);
+        else
+        {
+
+            // hide any question that is correct
+            for (i = 0; i < correct.length; i++) {
+                if (correct[i].value > 0) {
+                    divToHide = correct[i].closest('div');
+                    questionInfo = divToHide.previousElementSibling;
+                    divToHide.hidden = true;
+                    questionInfo.querySelector('.dlay_m').innerText = '+';
+                }
+            }
+        }
     }
 
-    // Find any "Correct response" alt text
-    var correct = document.querySelectorAll('d2l-icon[alt="Correct Response"]');
+    hideCorrect();
 
-    // hide any question that is correct
-    for (i = 0; i < correct.length; i++) {
-        divToHide = correct[i].closest('table').parentElement;
-        questionInfo = divToHide.previousElementSibling;
-        divToHide.hidden = true;
-        questionInfo.querySelector('.dlay_m').innerText = '+';
-    }
+
 })();
