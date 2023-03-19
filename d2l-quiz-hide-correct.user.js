@@ -34,7 +34,7 @@
         // Add handler for toggling question to any div that has one
         var middleColumns = document.getElementsByClassName('dlay_m');
         for (i = 0; i < middleColumns.length; i++) {
-            middleColumns[i].addEventListener("click", toggleQuestion);
+            middleColumns[i].addEventListener("mouseup", toggleQuestion);
             middleColumns[i].style.cursor = 'pointer';
             middleColumns[i].innerText = '-';
         }
