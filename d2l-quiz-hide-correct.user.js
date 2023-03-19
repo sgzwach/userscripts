@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         D2L Skip Questions Graded Correct in Quizzes
 // @namespace    http://github.com/sgzwach
-// @version      0.3
+// @version      0.4
 // @description  Any question marked correct should be minimized automatically, but can be expanded again
 // @author       shawn
 // @match        https://d2l.sdbor.edu/d2l/lms/quizzing/admin/mark/quiz_mark_attempt.d2l*
