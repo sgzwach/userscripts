@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         D2L Skip Questions Graded Correct in Quizzes
 // @namespace    http://github.com/sgzwach
-// @version      0.2
+// @version      0.3
 // @description  Any question marked correct should be minimized automatically, but can be expanded again
 // @author       shawn
 // @match        https://d2l.sdbor.edu/d2l/lms/quizzing/admin/mark/quiz_mark_attempt.d2l*
@@ -49,7 +49,7 @@
 
             // hide any question that is correct
             for (i = 0; i < correct.length; i++) {
-                if (correct[i].value > 0) {
+                if (correct[i].value >= 1) {
                     divToHide = correct[i].closest('div');
                     questionInfo = divToHide.previousElementSibling;
                     divToHide.hidden = true;
