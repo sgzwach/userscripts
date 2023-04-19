@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         D2L Skip Questions Graded Correct in Quizzes
 // @namespace    http://github.com/sgzwach
-// @version      0.4
+// @version      0.5
 // @description  Any question marked correct should be minimized automatically, but can be expanded again
 // @author       shawn
 // @match        https://d2l.sdbor.edu/d2l/lms/quizzing/admin/mark/quiz_mark_attempt.d2l*
@@ -17,13 +17,22 @@
     function toggleQuestion(e) {
         // check the text content of the caller (lazy, but probably effective enough)
         var t = e.target;
+        var nt = t;
+
+        // handle modified questions
+        if (t.closest('div').nextElementSibling.innerText.includes("This question is an old version")) {
+            nt = t.closest('div').nextElementSibling.nextElementSibling;
+        }
+        else {
+            nt = t.closest('div').nextElementSibling;
+        }
         if (t.innerText == '+') {
             // expand!
-            t.closest('div').nextElementSibling.hidden = false;
+            nt.hidden = false;
             t.innerText = '-';
         } else {
             // contract!
-            t.closest('div').nextElementSibling.hidden = true;
+            nt.hidden = true;
             t.innerText = '+';
         }
     }
@@ -52,6 +61,10 @@
                 if (correct[i].value >= 1) {
                     divToHide = correct[i].closest('div');
                     questionInfo = divToHide.previousElementSibling;
+                    // handle case where question has been modified
+                    if (questionInfo.innerText.includes("This question is an old version")) {
+                        questionInfo = questionInfo.previousElementSibling;
+                    }
                     divToHide.hidden = true;
                     questionInfo.querySelector('.dlay_m').innerText = '+';
                 }
