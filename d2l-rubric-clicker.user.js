@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Default Rubric Settings
 // @namespace      http://github.com/sgzwach
-// @version        0.3
+// @version        0.4
 // @description    Set all rubric criteria to 100% on page load and only remove points
 // @author         Shawn
 // @match          https://d2l.sdbor.edu/d2l/le/activities/iterator/*
@@ -14,6 +14,7 @@
     'use strict';
 
     var lock = false;
+    var rubriclock = false;
     var retries = 0;
     function clickCriterion() {
         if (lock || retries > 100) {
@@ -27,7 +28,8 @@
         retries += 1;
         try {
             // iterate over groups, finding left arrows and clicking as required
-            var groups = document.querySelector('d2l-consistent-evaluation').shadowRoot.querySelector('d2l-consistent-evaluation-page').shadowRoot.querySelector('#evaluation-template').querySelector('consistent-evaluation-right-panel').shadowRoot.querySelector('.d2l-consistent-evaluation-right-panel').querySelector('d2l-consistent-evaluation-rubric').shadowRoot.querySelector('d2l-consistent-evaluation-right-panel-block').querySelector('d2l-rubric').shadowRoot.querySelector('d2l-rubric-adapter').querySelector('d2l-rubric-criteria-groups').shadowRoot.querySelectorAll('d2l-rubric-criteria-group-mobile');
+            //var groups = document.querySelector('d2l-consistent-evaluation').shadowRoot.querySelector('d2l-consistent-evaluation-page').shadowRoot.querySelector('#evaluation-template').querySelector('consistent-evaluation-right-panel').shadowRoot.querySelector('.d2l-consistent-evaluation-right-panel').querySelector('d2l-consistent-evaluation-rubric').shadowRoot.querySelector('d2l-consistent-evaluation-right-panel-block').querySelector('d2l-rubric').shadowRoot.querySelector('d2l-rubric-adapter').querySelector('d2l-rubric-criteria-groups').shadowRoot.querySelectorAll('d2l-rubric-criteria-group-mobile');
+            var groups = document.querySelector('d2l-consistent-evaluation').shadowRoot.querySelector('d2l-consistent-evaluation-page').shadowRoot.querySelector('consistent-evaluation-right-panel').shadowRoot.querySelector('consistent-evaluation-right-panel-evaluation').shadowRoot.querySelector('d2l-consistent-evaluation-right-panel-rubric').shadowRoot.querySelector('d2l-rubric').shadowRoot.querySelector('d2l-rubric-adapter').querySelector('d2l-rubric-criteria-groups').shadowRoot.querySelectorAll('d2l-rubric-criteria-group-mobile');
             console.log("Groups", groups);
             if (groups.length == 0)
                 throw new Error('no groups defined');
@@ -60,6 +62,9 @@
     }
 
     function accordionAction(accordion) {
+        if (rubriclock)
+            return;
+        rubriclock = true;
         var cl = new Event("click", {bubbles: true});
 
         // run the rubric code!
@@ -70,18 +75,20 @@
 
         // wait for criteria to exist
         var ob = new MutationObserver(function(mutations){
-            console.log(mutations);
+            console.log("Accordion action firing...", mutations);
             clickCriterion();
             this.disconnect();
         }).observe(
             accordion,
             {attributes: true}
         );
+        rubriclock = false;
     }
 
     function rubricMark() {
         // check if accordion is opened - if it is, bail out
-        var accordion = document.querySelector('d2l-consistent-evaluation').shadowRoot.querySelector('d2l-consistent-evaluation-page').shadowRoot.querySelector('#evaluation-template').querySelector('consistent-evaluation-right-panel').shadowRoot.querySelector('.d2l-consistent-evaluation-right-panel').querySelector('d2l-consistent-evaluation-rubric').shadowRoot.querySelector('d2l-consistent-evaluation-right-panel-block').querySelector('d2l-rubric').shadowRoot.querySelector('d2l-rubric-adapter').shadowRoot.querySelector('d2l-labs-accordion').querySelector('d2l-labs-accordion-collapse');
+        //var accordion = document.querySelector('d2l-consistent-evaluation').shadowRoot.querySelector('d2l-consistent-evaluation-page').shadowRoot.querySelector('#evaluation-template').querySelector('consistent-evaluation-right-panel').shadowRoot.querySelector('.d2l-consistent-evaluation-right-panel').querySelector('d2l-consistent-evaluation-rubric').shadowRoot.querySelector('d2l-consistent-evaluation-right-panel-block').querySelector('d2l-rubric').shadowRoot.querySelector('d2l-rubric-adapter').shadowRoot.querySelector('d2l-labs-accordion').querySelector('d2l-labs-accordion-collapse');
+        var accordion = document.querySelector('d2l-consistent-evaluation').shadowRoot.querySelector('d2l-consistent-evaluation-page').shadowRoot.querySelector('consistent-evaluation-right-panel').shadowRoot.querySelector('consistent-evaluation-right-panel-evaluation').shadowRoot.querySelector('d2l-consistent-evaluation-right-panel-rubric').shadowRoot.querySelector('d2l-rubric').shadowRoot.querySelector('d2l-rubric-adapter').shadowRoot.querySelector('d2l-labs-accordion-collapse');
         /*if (accordion.attributes.getNamedItem('_state').nodeValue != "closed") {
             console.log("Rubric is not closed - continuing");
             console.log(accordion.attributes.getNamedItem('_state').nodeValue)
@@ -89,11 +96,15 @@
         }*/
         console.log("Accordion", accordion);
         // create a mutationObserver for this accordion to track when we're ready to go, unless it's already closed (initial state)
-        if (accordion.attributes.getNamedItem('_state').nodeValue == "closed" || accordion.attributes.getNamedItem('_state').nodeValue == "closing") {
+        var state = accordion.attributes.getNamedItem('_state').nodeValue;
+        console.log("ACCORDION STATE", state);
+        if (state == "closed" || state == "closing") {
             accordionAction(accordion);
+        } else if (state != "opened") {
+            setTimeout(rubricMark, 1000);
         } else {
             var mo_accordion = new MutationObserver(function(mutations){
-                console.log(mutations);
+                console.log("accordion mutated: ", mutations);
                 for (var i in mutations) {
                     if (mutations[i].target._state == "closed") {
                         accordionAction(accordion);
@@ -103,13 +114,19 @@
                 }
             }).observe(accordion, {attributeFilter: ["_state"], attributeOldValue: true});
         }
+        /*if (accordion.hasAttribute('opened')) {
+            setTimeout(clickCriterion, 1000);
+        } else {
+            setTimeout(function() {accordionAction(accordion);}, 1000);
+        }*/
     }
 
     var mo_title = new MutationObserver(function(mutations){
         console.log("TITLE MUTATION!!!!");
         console.log(mutations);
         if (mutations.length >= 1) {
-            rubricMark();
+            //rubricMark();
+            setTimeout(rubricMark, 1000);
         }
     });
 
