@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         D2L Skip Questions Graded Correct in Quizzes
 // @namespace    http://github.com/sgzwach
-// @version      0.6
+// @version      0.7
 // @description  Any question marked correct should be minimized automatically, but can be expanded again
 // @author       shawn
 // @match        https://d2l.sdbor.edu/d2l/le/activities/iterator/*
@@ -40,7 +40,7 @@
             for (i = 0; i < questions.length; i++) {
                 // for each question, find the score
                 score = questions[i].shadowRoot.querySelector("d2l-labs-grade-result-presentational");
-                if (score && !scores.includes(score))
+                if (score && !scores.includes(score) && score.getAttribute("grade-type") == "Numeric" && score.getAttribute("score-denominator") != "")
                     scores.push(score);
             }
             if (scores.length < questions.length) {
@@ -58,8 +58,8 @@
             header.addEventListener("mouseup", toggleQuestion);
             header.style.cursor = "pointer";
             if (gradeType == "Numeric") { // we have a number! Check the numerator and denominator
-                n = score.getAttribute("score-numerator");
-                d = score.getAttribute("score-denominator");
+                n = parseInt(score.getAttribute("score-numerator"), 10);
+                d = parseInt(score.getAttribute("score-denominator"), 10);
                 if (n >= d)
                 {
                     questions[i].shadowRoot.querySelector(".d2l-consistent-eval-quiz-question-wrapper").hidden = true;
