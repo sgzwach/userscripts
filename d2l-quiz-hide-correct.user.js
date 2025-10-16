@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         D2L Skip Questions Graded Correct in Quizzes
 // @namespace    http://github.com/sgzwach
-// @version      0.7
+// @version      0.8
 // @description  Any question marked correct should be minimized automatically, but can be expanded again
 // @author       shawn
 // @match        https://d2l.sdbor.edu/d2l/le/activities/iterator/*
@@ -30,7 +30,15 @@
     }
 
     async function hideQuestions() {
-        console.log("Woot!");
+        console.log("Awaiting student name match...");
+        // make sure the attempt name matches the captured name change
+        var pageUser = document.querySelector('d2l-consistent-evaluation').shadowRoot.querySelector('d2l-consistent-evaluation-page').shadowRoot.querySelector('d2l-consistent-evaluation-learner-context-bar').shadowRoot.querySelector('d2l-consistent-evaluation-lcb-user-context').shadowRoot.querySelector('.d2l-consistent-evaluation-lcb-user-name').title;
+        var attemptUser = document.querySelector('d2l-consistent-evaluation').shadowRoot.querySelector('d2l-consistent-evaluation-page').shadowRoot.querySelector("d2l-consistent-evaluation-left-panel").shadowRoot.querySelector("d2l-consistent-evaluation-evidence-quizzing").shadowRoot.querySelector("d2l-consistent-evaluation-quizzing-attempt").shadowRoot.querySelector("d2l-consistent-evaluation-quizzing-attempt-summary").getAttribute("user-display-name");
+        while (pageUser != attemptUser) {
+            await sleep(500);
+            pageUser = document.querySelector('d2l-consistent-evaluation').shadowRoot.querySelector('d2l-consistent-evaluation-page').shadowRoot.querySelector('d2l-consistent-evaluation-learner-context-bar').shadowRoot.querySelector('d2l-consistent-evaluation-lcb-user-context').shadowRoot.querySelector('.d2l-consistent-evaluation-lcb-user-name').title;
+            attemptUser = document.querySelector('d2l-consistent-evaluation').shadowRoot.querySelector('d2l-consistent-evaluation-page').shadowRoot.querySelector("d2l-consistent-evaluation-left-panel").shadowRoot.querySelector("d2l-consistent-evaluation-evidence-quizzing").shadowRoot.querySelector("d2l-consistent-evaluation-quizzing-attempt").shadowRoot.querySelector("d2l-consistent-evaluation-quizzing-attempt-summary").getAttribute("user-display-name");
+        }
         var questions = document.querySelector("d2l-consistent-evaluation").shadowRoot.querySelector("d2l-consistent-evaluation-page").shadowRoot.querySelector("d2l-consistent-evaluation-left-panel").shadowRoot.querySelector("d2l-consistent-evaluation-evidence-quizzing").shadowRoot.querySelector("d2l-consistent-evaluation-quizzing-attempt").shadowRoot.querySelectorAll("d2l-consistent-evaluation-quizzing-attempt-result");
         var scores = [];
         var i, score, gradeType, header;
@@ -44,7 +52,6 @@
                     scores.push(score);
             }
             if (scores.length < questions.length) {
-                console.log(scores.length);
                 await sleep(250); // added this to avoid locking up the page
             }
         }
@@ -58,11 +65,13 @@
             header.addEventListener("mouseup", toggleQuestion);
             header.style.cursor = "pointer";
             if (gradeType == "Numeric") { // we have a number! Check the numerator and denominator
-                n = parseInt(score.getAttribute("score-numerator"), 10);
-                d = parseInt(score.getAttribute("score-denominator"), 10);
-                if (n >= d)
+                n = parseFloat(score.getAttribute("score-numerator"));
+                d = parseFloat(score.getAttribute("score-denominator"));
+                if (score.getAttribute("score-numerator") != "" && n >= d)
                 {
                     questions[i].shadowRoot.querySelector(".d2l-consistent-eval-quiz-question-wrapper").hidden = true;
+                } else {
+                    questions[i].shadowRoot.querySelector(".d2l-consistent-eval-quiz-question-wrapper").hidden = false;
                 }
             }
         }
