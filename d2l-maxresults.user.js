@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         D2L Max Results
 // @namespace    http://github.com/sgzwach
-// @version      0.2
+// @version      0.3
 // @description  Finds elements of d2l-select class that have the title "Results Per Page" and selects the max default item.
 // @author       shawn
 // @match        https://d2l.sdbor.edu/d2l/lms/*
@@ -17,8 +17,13 @@
     // This is clunky but works
     var i;
     var resultsSel = null;
+    var label = null;
     for (i=0; i < allSelects.length; i++) {
-        if (allSelects[i].title == "Results Per Page") {
+        label = document.querySelector('.d2l-offscreen[for="' + allSelects[i].id + '"]');
+        if (label) {
+            label = label.innerText;
+        }
+        if (label == "Results Per Page") {
             resultsSel = allSelects[i];
             break;
         }
