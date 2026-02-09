@@ -6,8 +6,8 @@
 // @author         shawn
 // @match          https://apply.dsu.edu/manage/reader/*
 // @icon           https://www.google.com/s2/favicons?sz=64&domain=dsu.edu
-// @updateURL      https://raw.githubusercontent.com/sgzwach/userscripts/master/banner-profile-term-select.user.js
-// @downloadURL    https://raw.githubusercontent.com/sgzwach/userscripts/master/banner-profile-term-select.user.js
+// @updateURL      https://raw.githubusercontent.com/sgzwach/userscripts/master/slate-reader-fixes.user.js
+// @downloadURL    https://raw.githubusercontent.com/sgzwach/userscripts/master/slate-reader-fixes.user.js
 // @grant          none
 // @run-at         document-start
 // ==/UserScript==
