@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Banner - Student Profile Term Select
 // @namespace      http://github.com/sgzwach
-// @version        0.2
+// @version        20260413
 // @description    Add a dropdown for active terms within student profile view
 // @author         shawn
 // @updateURL      https://raw.githubusercontent.com/sgzwach/userscripts/master/banner-profile-term-select.user.js
@@ -15,7 +15,7 @@
     'use strict';
 
     function fetchTerms(curTerm) {
-        $.getJSON("https://student.sdbor.edu/StudentSelfService/ssb/termSelection/termsList", function(data){
+        $.getJSON("https://student.sdbor.edu/StudentSelfService/ssb/termSelection/termsList?searchTerm=", function(data){
             var termList = [];
             $.each(data, function(k,v) {
                 if (v.termDesc == curTerm)
