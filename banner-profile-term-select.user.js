@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Banner - Student Profile Term Select
 // @namespace      http://github.com/sgzwach
-// @version        20260413
+// @version        2026-04-13
 // @description    Add a dropdown for active terms within student profile view
 // @author         shawn
 // @updateURL      https://raw.githubusercontent.com/sgzwach/userscripts/master/banner-profile-term-select.user.js
