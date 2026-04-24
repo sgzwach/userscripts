@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           D2L Daylight Tiny
 // @namespace      http://github.com/sgzwach
-// @version        0.3
+// @version        2026-04-24
 // @description    Shrink the daylight theme where appropriate.
 // @author         Shawn
 // @match          https://d2l.sdbor.edu/d2l*
@@ -31,21 +31,16 @@
                 console.log(dates[i]);
 
                 // move date to end-ish of cell
-                var clr = dates[i].parentElement.parentElement.parentElement.children[0].querySelector(".clear");
-                clr.parentNode.insertBefore(dates[i], clr);
+                var clr = dates[i].parentElement.parentElement.parentElement.children[0].querySelector('.d2l-foldername-icons');
+                clr.after(dates[i]);
 
                 console.log(clr);
-
                 // if there's a end date, snag that too
                 var end = clr.parentElement.parentElement.parentElement.querySelector(".d2l-folderdate-wrapper-row");
                 if (end) {
                     // add a dash to the due date
-                    //var clone = dates[i].cloneNode();
-                    //clr.parentNode.insertBefore(clone, clr);
-                    var ele = document.createElement("strong");
-                    ele.innerText = " / "
-                    clr.parentNode.insertBefore(ele, clr);
-                    clr.parentNode.insertBefore(end, clr);
+                    dates[i].children[0].children[0].children[0].innerText += " / ";
+                    dates[i].children[0].children[0].after(end);
                 }
             }
 
